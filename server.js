@@ -59,9 +59,9 @@ const ffmpeg = spawn('ffmpeg', [
   '-f',
   'v4l2',
   '-framerate',
-  '30',
+  '25',
   '-video_size',
-  '1280x720',
+  '640x480',
   '-i',
   '/dev/video0',
   '-f',
@@ -69,13 +69,14 @@ const ffmpeg = spawn('ffmpeg', [
   '-codec:v',
   'mpeg1video',
   '-s',
-  '1280x720',
+  '640x480',
+  // '1280x720',
   '-b:v',
   '1000k',
   '-bf',
   '0',
-  // '-q',
-  // '1', // 1 to 31
+  '-q',
+  '4', // 1 to 31
   `http://${HOST}:${PORT}/${STREAM}`
 ])
 
