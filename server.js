@@ -60,18 +60,13 @@ const ffmpeg = spawn('ffmpeg', [
   '/dev/video0',
   '-f',
   'mpegts',
-  // '-input_format',
   '-codec:v',
   'mpeg1video',
-  // '-vcodec',
-  // 'copy',
   '-an',
   '-s',
-  '640x480',
+  '1280x720 ',
   '-r',
-  '20',
-  '-bf',
-  '0',
+  '30',
   `http://${HOST}:${PORT}/${STREAM}`
 ])
 
