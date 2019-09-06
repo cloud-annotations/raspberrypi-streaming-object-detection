@@ -9,18 +9,21 @@ const app = express()
 const HOST = '0.0.0.0'
 const PORT = 3000
 const STREAM = 'stream'
-const VERBOSE = true
+const VERBOSE = false
 
 const ipAddress = (() => {
   const interfaces = os.networkInterfaces()
-  Object.keys(interfaces).forEach(name => {
-    interfaces[name].forEach(interface => {
-      // Skip internal (i.e. 127.0.0.1) and non-ipv4 addresses
-      if (interface.family === 'IPv4' && !interface.internal) {
-        return interface.address
-      }
+  return Object.keys(interfaces)
+    .map(name => {
+      return interfaces[name].find(interface => {
+        // Skip internal (i.e. 127.0.0.1) and non-ipv4 addresses
+        if (interface.family !== 'IPv4' || interface.internal) {
+          return false
+        }
+        return true
+      }).address
     })
-  })
+    .filter(address => address)[0]
 })()
 
 app.use(express.static(path.join(__dirname, 'public')))
