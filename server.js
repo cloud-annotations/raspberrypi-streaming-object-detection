@@ -65,6 +65,10 @@ const ffmpeg = spawn('ffmpeg', [
   '-an',
   '-s',
   '1280x720',
+  '-b:v',
+  '800k',
+  '-bf',
+  '0',
   '-r',
   '30',
   `http://${HOST}:${PORT}/${STREAM}`
