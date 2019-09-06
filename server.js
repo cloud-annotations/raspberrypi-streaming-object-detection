@@ -56,23 +56,26 @@ const wsServer = new ws.Server({ server: server })
 // Start ffmpeg.
 const ffmpeg = spawn('ffmpeg', [
   '-hide_banner',
+  '-f',
+  'v4l2',
+  '-framerate',
+  '30',
+  '-video_size',
+  '1280x720',
   '-i',
   '/dev/video0',
   '-f',
   'mpegts',
   '-codec:v',
   'mpeg1video',
-  '-an',
   '-s',
   '1280x720',
   '-b:v',
-  '800k',
+  '1000k',
   '-bf',
   '0',
-  '-q',
-  '1', // 1 to 31
-  '-r',
-  '30',
+  // '-q',
+  // '1', // 1 to 31
   `http://${HOST}:${PORT}/${STREAM}`
 ])
 
