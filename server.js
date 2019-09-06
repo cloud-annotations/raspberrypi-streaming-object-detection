@@ -77,7 +77,7 @@ const ffmpeg = spawn('ffmpeg', [
 
 ffmpeg.stderr.on('data', data => {
   if (VERBOSE) {
-    console.log(data)
+    console.log(`${data}`)
   }
 })
 
