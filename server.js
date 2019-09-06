@@ -70,7 +70,7 @@ const ffmpeg = spawn('ffmpeg', [
   '-bf',
   '0',
   '-q',
-  '1',
+  '1', // 1 to 31
   '-r',
   '30',
   `http://${HOST}:${PORT}/${STREAM}`
