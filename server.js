@@ -9,7 +9,7 @@ const app = express()
 const HOST = '0.0.0.0'
 const PORT = 3000
 const STREAM = 'stream'
-const VERBOSE = false
+const VERBOSE = true
 
 const ipAddress = (() => {
   const interfaces = os.networkInterfaces()
