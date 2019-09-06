@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8" />
+  <head>
+    <title>Raspberry Pi Streaming</title>
+  </head>
+  <body>
+    <div style="margin: 20px;">
+      <div style="padding: 10px;">
+        <button id="wsconnect" onclick="wsConnect()">
+          start stream
+        </button>
+        <br />
+      </div>
+
+      <div style="padding: 10px;">
+        <div
+          id="imagewrapper"
+          style="position:relative;display:inline-block;min-width:680px;vertical-align:top;"
+        >
+          <canvas id="video-canvas" style="display:none;"></canvas>
+          <canvas id="annoted-canvas"></canvas>
+          <!-- <canvas id="canvasposes" style="z-index:3; position:absolute; left:0px; top:0px;"></canvas> -->
+        </div>
+        <div style="position:relative;display:inline-block;">
+          <div id="message"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="js/jsmpeg.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
