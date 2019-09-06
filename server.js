@@ -15,13 +15,14 @@ const ipAddress = (() => {
   const interfaces = os.networkInterfaces()
   return Object.keys(interfaces)
     .map(name => {
-      return interfaces[name].find(interface => {
+      const item = interfaces[name].find(item => {
         // Skip internal (i.e. 127.0.0.1) and non-ipv4 addresses
-        if (interface.family !== 'IPv4' || interface.internal) {
+        if (item.family !== 'IPv4' || item.internal) {
           return false
         }
         return true
-      }).address
+      })
+      return item ? item.address : false
     })
     .filter(address => address)[0]
 })()
